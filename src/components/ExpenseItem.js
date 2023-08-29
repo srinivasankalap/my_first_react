@@ -1,9 +1,18 @@
+import './ExpenseItem.css'
+
 function ExpenseItem(){
+    const ExpenseDate=new Date(2023, 6, 29);
+    const ExpenseName='Food';
+    const ExpenseValue=10.95;
+    const LocationOfExpenditure='Ooty'
     return (
-    <div>
-        <h6>Food Rs 10</h6>
-        <h6>Petrol Rs 100</h6>
-        <h6>Movie Rs 200</h6>
+    <div className='expense-item'>
+        <div>{ExpenseDate.toISOString()}</div>
+        <div className='expense-item__description'>
+            <h2>{ExpenseName}</h2>
+        </div>
+        <div className='expense-item__description'><h2>{LocationOfExpenditure}</h2></div>
+        <div className='expense-item__price'>${ExpenseValue}</div>
     </div>
     )
 }
