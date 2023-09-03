@@ -2,21 +2,31 @@ import { useState } from 'react';
 import './ExpenseForm.css'
 
 const ExpenseForm=()=>{
-    const [title, setTitle]=useState('');
+    const [prevtitle, setTitle]=useState('');
     const TitleChanged=(e)=>{
         setTitle(e.target.value);
     }
-    const [amount, setAmount]=useState('');
+    const [prevamount, setAmount]=useState('');
     const AmountChanged=(e)=>{
         setAmount(e.target.value);
     }
-    const [date, setDate]=useState('');
+    const [prevdate, setDate]=useState('');
     const DateChanged=(e)=>{
         setDate(e.target.value);
     }
 
+    const submitClicked=(e)=>{
+        e.preventDefault();
+        const expenseData={
+            title: prevtitle,
+            amount: prevamount,
+            date: new Date(prevdate)
+        };
+        console.log(expenseData);
+    }
+
     return (
-        <form>
+        <form onSubmit={submitClicked}>
             <div className='new-expense__controls'>
                 <div className='new-expense__control'>
                     <label>Expense Title</label>
